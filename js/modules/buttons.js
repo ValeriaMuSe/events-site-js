@@ -1,6 +1,6 @@
 import formatDate from './dateFormatter.js';
 import formatPrice from './priceFormatter.js';
-import { EventAPIProxy } from './eventAPI.js';
+import { EventAPIProxy } from './services/eventAPI.js';
 
 const eventApi = new EventAPIProxy();
 
