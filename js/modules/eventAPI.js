@@ -1,4 +1,3 @@
-// Archivo: eventAPI.js
 const eventApiUrl = 'https://knassbani2.execute-api.us-east-2.amazonaws.com/events/';
 
 class EventAPI {
