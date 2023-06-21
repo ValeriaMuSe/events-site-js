@@ -4,8 +4,6 @@ import { EventAPIProxy } from './services/eventAPI.js';
 
 const eventApi = new EventAPIProxy();
 
-export { eventApi, formatDate, formatPrice };
-
 function renderEvents(eventsData) {
   var gridContainer = document.getElementById('grid-container');
   if (!gridContainer) {
