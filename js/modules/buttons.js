@@ -8,7 +8,6 @@ export { eventApi, formatDate, formatPrice };
 
 function renderEvents(eventsData) {
   var gridContainer = document.getElementById('grid-container');
-  // Limpiar la cuadrícula de eventos existente
   if (!gridContainer) {
     gridContainer = document.createElement('div');
     gridContainer.id = 'grid-container';

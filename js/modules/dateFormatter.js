@@ -1,4 +1,3 @@
-
 function formatDate(date) {
     const options = {
       weekday: 'long',
