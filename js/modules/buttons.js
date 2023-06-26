@@ -1,4 +1,4 @@
-import formatDate from './dateFormatter.js';
+import formatDate from './formatDate.js';
 import { renderPrice } from './renderPrice.js';
 import { EventAPIProxy } from './services/eventAPI.js';
 
