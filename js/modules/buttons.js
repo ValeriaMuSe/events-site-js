@@ -1,5 +1,5 @@
 import formatDate from './dateFormatter.js';
-import formatPrice from './priceFormatter.js';
+import { renderPrice } from './renderPrice.js';
 import { EventAPIProxy } from './services/eventAPI.js';
 
 const eventApi = new EventAPIProxy();
@@ -17,7 +17,7 @@ function renderEvents(eventsData) {
         <img class="event_image" src="${event.image}">
         <p class="event_title">${event.title}</p>
         <p>${formatDate(event.date)}</p>
-        <p>${formatPrice(event.price)}</p>
+        <p>${renderPrice(event.price)}</p>
         <p>Location: ${event.location.city}, ${event.location.state},${event.location.address} </p>
       </div>
     `)
