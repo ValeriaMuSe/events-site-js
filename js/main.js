@@ -1,4 +1,3 @@
-
-import { initializeButtons } from './modules/buttons.js';
+import { initializeButtons } from './modules/config/config.js';
 
 initializeButtons();

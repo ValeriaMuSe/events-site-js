@@ -8,7 +8,6 @@ class EventAPI {
 
   async getEventsByCategory(category) {
     if (category in this.cache) {
-      console.log('Datos obtenidos del caché.');
       return this.cache[category];
     }
 
@@ -34,7 +33,6 @@ class EventAPIProxy {
 
   async getEventsByCategory(category) {
     if (category in this.cache) {
-      console.log('Datos obtenidos del caché.');
       return this.cache[category];
     }
 
