@@ -8,7 +8,6 @@ function initializeButtons() {
     var button = document.createElement('button');
     button.innerHTML = category;
     button.addEventListener('click', function () {
-      console.log('Categoría seleccionada: ' + category);
       if (defaultButton !== null) {
         defaultButton.classList.remove('default-tab-button');
       }

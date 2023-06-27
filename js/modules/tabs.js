@@ -2,7 +2,7 @@ import formatDate from './utils/formatDate.js';
 import { renderPrice } from './utils/renderPrice.js';
 import { EventAPIProxy } from './services/eventAPI.js';
 
-const eventApi = new EventAPIProxy();
+const eventApi = EventAPIProxy;
 
 function renderEvents(eventsData) {
   var gridContainer = document.getElementById('grid-container');
