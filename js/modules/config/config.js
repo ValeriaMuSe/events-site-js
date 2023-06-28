@@ -33,3 +33,4 @@ function initializeButtons() {
 }
 
 export { initializeButtons };
+
