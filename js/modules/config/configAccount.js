@@ -2,8 +2,16 @@ function createNavigationTabs() {
     var eventscategories = ['Favorites', 'Interested', 'Going'];
     var defaultButton = null;
   
-    var container = document.querySelector('.container');
-  
+    // var container = document.querySelector('.container');
+    
+  var container = document.querySelector('.container');
+ container.innerHTML += `
+    <div class="container-account">
+      <a class="my-account__link link-variant" href="/events-site-js/account.html">Back to events</a>
+      <a class="my-account__link" href="/events-site-js/account.html"><img class="arrow-left__icon" src="./images/arrow-left-icon.svg"></a>
+    </div>
+  `
+    
     var tabsContainer = document.createElement('div');
     tabsContainer.className = 'tabs';
   
