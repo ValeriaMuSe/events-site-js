@@ -13,19 +13,21 @@ function renderEvents(eventsData) {
   }
   gridContainer.innerHTML = eventsData
     .map((event) => `
-      <div class="event">
+      <div class="event event-card">
         <img class="event_image" src="${event.image}">
         <div class="container-icon">
-        <div class="rounded-bg">
+          <div class="rounded-bg">
             <img class="heart-image" src="./images/heart.png">
+          </div>
         </div>
-    </div>
         <p class="event_title">${event.title}</p>
         <p>${formatDate(event.date)}</p>
         <p>${renderPrice(event.price)}</p>
         <p>Location: ${event.location.city}, ${event.location.state}, ${event.location.address}</p>
-        <button class="interested-button">Interested</button>
-        <button class="going-button">Going!</button>
+        <div class="button-container">
+          <button class="interested-button">Interested</button>
+          <button class="going-button">Going!</button>
+        </div>
       </div>
     `)
     .join('');

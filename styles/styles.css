@@ -127,3 +127,16 @@ body {
   right: 180px;
   position: relative;
 }
+
+.button-container {
+  display: flex;
+  margin-top: 10px; 
+  gap: 20px;
+}
+
+.event-card {
+  min-height: 250px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
