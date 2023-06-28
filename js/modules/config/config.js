@@ -7,8 +7,8 @@ function initializeButtons() {
   var navigationContainer = document.querySelector('.container');
   navigationContainer.innerHTML += `
     <div class="account__container">
-      <a class="my-account__link" href="/events-site-js/account.html">My account</a>
-      <a class="my-account__link" href="/events-site-js/account.html"><img class="arrow-right__icon" src="./images/arrow-right-icon.svg"></a>
+      <a class="my-account__link" href="../../account.html">My account</a>
+      <a class="my-account__link" href="../../account.html"><img class="arrow-right__icon" src="./images/arrow-right-icon.svg"></a>
     </div>
   `
   eventscategories.forEach(function (category) {

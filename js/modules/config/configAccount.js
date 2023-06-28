@@ -7,8 +7,8 @@ function createNavigationTabs() {
   var container = document.querySelector('.container');
  container.innerHTML += `
     <div class="container-account">
-      <a class="my-account__link link-variant" href="/events-site-js/account.html">Back to events</a>
-      <a class="my-account__link" href="/events-site-js/account.html"><img class="arrow-left__icon" src="./images/arrow-left-icon.svg"></a>
+      <a class="my-account__link" href="../../index.html"><img class="arrow-left__icon" src="./images/arrow-left-icon.svg"></a>
+      <a class="my-account__link link-variant" href="../../index.html">Back to events</a>
     </div>
   `
     
