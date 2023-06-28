@@ -95,3 +95,22 @@ body {
   padding: 6px;
   color: white;
 }
+
+.account__container {
+  display: flex;
+  left: 805px;
+  position: relative;
+}
+.my-account__link {
+  font-size: 12px;
+  font-weight: 600;
+  color: #fff;
+  text-decoration: none;
+}
+.my-account__link:hover {
+  text-decoration: underline;
+}
+.arrow-right__icon {
+  width: 20px;
+  margin-left: 7px;
+}
