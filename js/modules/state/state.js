@@ -1,6 +1,6 @@
-let state = {
-  heartImage: '../images/heart.svg'
-};
+let state = {};
+
+
 const appState = {
   getState() {
     return { ...state };
@@ -10,4 +10,5 @@ const appState = {
   }
 };
 Object.freeze(appState);
+
 export default appState;
