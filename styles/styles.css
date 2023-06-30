@@ -54,7 +54,7 @@ body {
 }
 
 #grid-container {
-  /* display: grid; */
+  display: grid;
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
   grid-gap: 20px;
   /* margin: 25px; */
@@ -131,6 +131,7 @@ body {
 .container-account {
   display: flex;
   position: relative;
+  left: 14px;
 }
 
 .button-container {
@@ -147,5 +148,5 @@ body {
 }
 
 .tabs {
-  display: contents;
+  display: flex;
 }
