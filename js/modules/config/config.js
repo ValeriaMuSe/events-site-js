@@ -1,7 +1,7 @@
-import { handleClick } from '../tabs.js'
+import { handleClick } from '../tabs.js';
+import { eventscategories } from './categories.js';
 
 function initializeButtons() {
-  var eventscategories = ['Music', 'Sports', 'Business', 'Food', 'Art'];
   var defaultButton = null;
 
   var navigationContainer = document.querySelector('.container');
@@ -10,8 +10,9 @@ function initializeButtons() {
       <a class="my-account__link" href="../../account.html">My account</a>
       <a class="my-account__link" href="../../account.html"><img class="arrow-right__icon" src="./images/arrow-right-icon.svg"></a>
     </div>
-  `
-  eventscategories.forEach(function (category) {
+  `;
+
+  Object.values(eventscategories).forEach(function (category) {
     var button = document.createElement('button');
     button.innerHTML = category;
     button.addEventListener('click', function () {
@@ -25,7 +26,7 @@ function initializeButtons() {
 
     var container = document.querySelector('.container');
     container.appendChild(button);
-    if (category === 'Music') {
+    if (category === eventscategories.Music) {
       button.classList.add('default-tab-button');
       defaultButton = button;
     }
@@ -40,4 +41,3 @@ function initializeButtons() {
 }
 
 export { initializeButtons };
-
