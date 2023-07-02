@@ -1,9 +1,9 @@
-
-
 import formatDate from './utils/formatDate.js';
 import { renderPrice } from './utils/renderPrice.js';
 import { EventAPIProxy } from './services/eventAPI.js';
 import { saveEvent, getEvents } from './localstorage/LocalStorage.js';
+import appState from './state/state.js';
+import { handleHeartImageClick } from './favoriteBtn.js';
 
 const eventApi = EventAPIProxy;
 
@@ -20,7 +20,7 @@ function renderEvents(eventsData) {
         <img class="event_image" src="${event.image}">
         <div class="container-icon">
           <div class="rounded-bg">
-            <img class="heart-image" src="./images/heart.png">
+            <img class="heart-image" src="${appState.getState().heartImage}">
           </div>
         </div>
         <p class="event_title">${event.title}</p>
@@ -86,6 +86,6 @@ function handleClick(category) {
 
 
 
-export { handleClick };
+export { handleClick, handleHeartImageClick };
 
 

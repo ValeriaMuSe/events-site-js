@@ -6,17 +6,17 @@
 // };
 
 
-// const appState = {
-//   getState() {
-//     return { ...state };
-//   },
-//   setState(newState) {
-//     state = { ...state, ...newState };
-//   }
-// };
-// Object.freeze(appState);
+// state.js
+const appState = {
+  state: {},
+  setState(newState) {
+    this.state = { ...this.state, ...newState };
+  },
+  getState() {
+    return this.state;
+  }
+};
 
-// export default appState;
 
 
 
@@ -61,77 +61,79 @@
 
 // export default appState;
 
-let state = {
-  favorites: [],
-  interested: [],
-  going: [],
-};
+// let state = {
+//   favorites: [],
+//   interested: [],
+//   going: [],
+// };
 
-const prueba =  {
+// const prueba =  {
 
-  getdata ( value) {
-    return [ ...state[value] ];
-  },
-  addEvent( value, event) {
-    state[value].push(event);
-      if (value === 'interested') {
-        
-      }
-  }
-
-
-
-}
+//   getdata ( value) {
+//     return [ ...state[value] ];
+//   },
+//   addEvent( value, event) {
+//     state[value].push(event);
+//       if (value === 'interested') {
+//         state.going = state.going.filter(element => element.id !== event.id);
+//       } else {
+//         state.interested = state.interested.filter(element => element.id !== event.id);
+//       }
+//   }
 
 
-const stateSingleton = (() => {
+
+// }
+
+
+// const stateSingleton = (() => {
   
-  return {
+//   return {
    
-    addToFavorites(event) {
-      state.favorites.push(event);
-      localStorage.setItem('state', JSON.stringify(state));
-    },
-    addToInterested(event) {
-      state.interested.push(event);
-      localStorage.setItem('state', JSON.stringify(state));
-    },
-    addToGoing(event) {
-      state.going.push(event);
-      localStorage.setItem('state', JSON.stringify(state));
-    },
-    removeFromFavorites(eventId) {
-      state.favorites = state.favorites.filter(event => event.id !== eventId);
-      localStorage.setItem('state', JSON.stringify(state));
-    },
-    removeFromInterested(eventId) {
-      state.interested = state.interested.filter(event => event.id !== eventId);
-      localStorage.setItem('state', JSON.stringify(state));
-    },
-    removeFromGoing(eventId) {
-      state.going = state.going.filter(event => event.id !== eventId);
-      localStorage.setItem('state', JSON.stringify(state));
-    },
-    getEventsByCategory(category) {
-      switch (category) {
-        case accountcategories.Favorites:
-          return [...state.favorites];
-        case accountcategories.Interested:
-          return [...state.interested];
-        case accountcategories.Going:
-          return [...state.going];
-        default:
-          return [];
-      }
-    },
-  };
-})();
+//     addToFavorites(event) {
+//       state.favorites.push(event);
+//       localStorage.setItem('state', JSON.stringify(state));
+//     },
+//     addToInterested(event) {
+//       state.interested.push(event);
+//       localStorage.setItem('state', JSON.stringify(state));
+//     },
+//     addToGoing(event) {
+//       state.going.push(event);
+//       localStorage.setItem('state', JSON.stringify(state));
+//     },
+//     removeFromFavorites(eventId) {
+//       state.favorites = state.favorites.filter(event => event.id !== eventId);
+//       localStorage.setItem('state', JSON.stringify(state));
+//     },
+//     removeFromInterested(eventId) {
+//       state.interested = state.interested.filter(event => event.id !== eventId);
+//       localStorage.setItem('state', JSON.stringify(state));
+//     },
+//     removeFromGoing(eventId) {
+//       state.going = state.going.filter(event => event.id !== eventId);
+//       localStorage.setItem('state', JSON.stringify(state));
+//     },
+//     getEventsByCategory(category) {
+//       switch (category) {
+//         case accountcategories.Favorites:
+//           return [...state.favorites];
+//         case accountcategories.Interested:
+//           return [...state.interested];
+//         case accountcategories.Going:
+//           return [...state.going];
+//         default:
+//           return [];
+//       }
+//     },
+//   };
+// })();
 
-const storedState = localStorage.getItem('state');
-if (storedState) {
-  state.state = JSON.parse(storedState);
-}
+// const storedState = localStorage.getItem('state');
+// if (storedState) {
+//   state.state = JSON.parse(storedState);
+// }
 
-export default state;
+export default appState;
 
 
