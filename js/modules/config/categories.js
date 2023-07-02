@@ -1,3 +1,5 @@
+
+
 const eventscategories = {
   Music: 'Music',
   Sports: 'Sports',
@@ -13,8 +15,4 @@ const accountcategories = {
 };
 
 export {eventscategories, accountcategories};
-
-
-
-
 
