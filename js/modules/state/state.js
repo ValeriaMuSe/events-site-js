@@ -1,26 +1,3 @@
-// const state = {
-//   favorites: [],
-//   interested: [],
-//   going: [],
-// };
-
-// const singletonState = {
-//   getdata(value) {
-//     return [...state[value]];
-//   },
-//   addEvent(value, event) {
-//     state[value].push(event);
-//     if (value === 'interested') {
-//       state.going = state.going.filter((element) => element && element.id !== event.id);
-//     } else {
-//       state.interested = state.interested.filter((element) => element && element.id !== event.id);
-//     }
-//   },
-// };
-
-// export { singletonState };
-
-
 const state = {
   favorites: [],
   interested: [],

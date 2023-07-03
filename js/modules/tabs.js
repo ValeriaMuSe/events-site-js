@@ -19,9 +19,10 @@ function renderEvents(eventsData) {
       <div class="event event-card">
         <img class="event_image" src="${event.image}">
         <div class="container-icon">
-          <div class="rounded-bg">
-            <img class="heart-image" src="${singletonState.getState().heartImage}">
-          </div>
+        <div class="rounded-bg">
+        <img class="heart-image" src="${singletonState.getState().favorites.length > 0 ? singletonState.getState().favorites[0].heartImage : ''}">
+      </div>
+      
         </div>
         <p class="event_title">${event.title}</p>
         <p>${formatDate(event.date)}</p>
