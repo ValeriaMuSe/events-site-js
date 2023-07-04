@@ -150,3 +150,27 @@ body {
 .tabs {
   display: flex;
 }
+
+#calendar-title {
+  /* Estilos para el título del calendario */
+  text-align: center;
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 10px;
+  color: #fff;
+}
+
+#calendar-body {
+  /* Estilos para el cuerpo del calendario */
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 5px;
+}
+
+.calendar-cell {
+  /* Estilos para las celdas del calendario */
+  border: 1px solid #ccc;
+  padding: 5px;
+  text-align: center;
+  color: #fff;
+}

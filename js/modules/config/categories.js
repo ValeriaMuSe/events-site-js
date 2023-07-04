@@ -12,6 +12,7 @@ const accountcategories = {
   Favorites: 'Favorites',
   Interested: 'Interested',
   Going: 'Going',
+  Calendar: 'Calendar'
 };
 
 export {eventscategories, accountcategories};
