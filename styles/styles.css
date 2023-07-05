@@ -157,7 +157,7 @@ body {
   font-size: 18px;
   font-weight: bold;
   margin-bottom: 10px;
-  color: #fff;
+  color: #020202;
 }
 
 #calendar-body {
@@ -172,5 +172,16 @@ body {
   border: 1px solid #ccc;
   padding: 5px;
   text-align: center;
-  color: #fff;
+  color: #020202;
+  width: 200px;
+  height: 142px;
+}
+
+.calendar-container {
+  margin-top: 20px; /* Ajusta este valor según sea necesario */
+}
+
+.calendar-content {
+  display: block;
+  margin-top: 30px;
 }
