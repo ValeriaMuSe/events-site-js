@@ -165,20 +165,21 @@ body {
   display: grid;
   grid-template-columns: repeat(7, 1fr);
   gap: 5px;
+  margin-bottom: 15px;
 }
 
 .calendar-cell {
-  /* Estilos para las celdas del calendario */
-  border: 1px solid #ccc;
+  border: 1px solid #aeaeae;
+  border-radius: 5px;
   padding: 5px;
   text-align: center;
   color: #020202;
-  width: 200px;
+  width: 146px;
   height: 142px;
 }
 
 .calendar-container {
-  margin-top: 20px; /* Ajusta este valor según sea necesario */
+  margin-top: 20px;
 }
 
 .calendar-content {
