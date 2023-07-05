@@ -186,3 +186,20 @@ body {
   display: block;
   margin-top: 30px;
 }
+
+.btns-container{
+  display: flex;
+  justify-content: center;
+  margin-bottom: 50px;
+  margin-top: 50px;
+  gap: 30px;
+}
+
+.calendar-button {
+  border: 2px solid black;
+  border-radius: 6px;
+  width: 120px;
+  height: 30px;
+  background-color: black;
+  color: white;
+}
