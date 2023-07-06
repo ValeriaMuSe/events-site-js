@@ -208,3 +208,13 @@ body {
   text-align: center;
   font-weight: 500;
 }
+
+.day-cell {
+  background-color: white;
+    text-align: center;
+    padding: 5px;
+    width: 140px;
+    height: 140px;
+    border: 2px solid black;
+    border-radius: 14px;
+}
