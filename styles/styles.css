@@ -203,3 +203,8 @@ body {
   background-color: black;
   color: white;
 }
+
+.day-of-week {
+  text-align: center;
+  font-weight: 500;
+}

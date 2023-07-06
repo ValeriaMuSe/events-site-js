@@ -19,5 +19,3 @@ const singletonState = {
 };
 
 export { singletonState };
-
-
