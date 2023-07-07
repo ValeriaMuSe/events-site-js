@@ -168,16 +168,6 @@ body {
   margin-bottom: 15px;
 }
 
-.calendar-cell {
-  border: 1px solid #aeaeae;
-  border-radius: 5px;
-  padding: 5px;
-  text-align: center;
-  color: #020202;
-  width: 146px;
-  height: 142px;
-}
-
 .calendar-container {
   margin-top: 20px;
 }
@@ -196,7 +186,7 @@ body {
 }
 
 .calendar-button {
-  border: 2px solid black;
+  border: none;
   border-radius: 6px;
   width: 120px;
   height: 30px;
@@ -204,17 +194,20 @@ body {
   color: white;
 }
 
-.day-of-week {
+.calendar-button:hover {
+  background-color: rgb(89, 89, 89);
+}
+
+.day-name-cell {
   text-align: center;
-  font-weight: 500;
+  margin-bottom: 10px;
 }
 
 .day-cell {
-  background-color: white;
-    text-align: center;
-    padding: 5px;
-    width: 140px;
-    height: 140px;
-    border: 2px solid black;
-    border-radius: 14px;
+  text-align: center;
+  padding: 5px;
+  width: 140px;
+  height: 140px;
+  border: 2px solid rgb(215, 215, 215);
+  border-radius: 14px;
 }
