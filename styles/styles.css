@@ -210,4 +210,6 @@ body {
   height: 140px;
   border: 2px solid rgb(215, 215, 215);
   border-radius: 14px;
+  font-weight: 500;
+  color: rgb(112, 112, 112);
 }

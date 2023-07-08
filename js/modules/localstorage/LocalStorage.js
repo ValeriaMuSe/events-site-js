@@ -10,4 +10,3 @@ function getEvents(key) {
 }
 
 export { saveEvent, getEvents };
-

@@ -171,7 +171,6 @@ function createNavigationTabs() {
     var firstDayIndex = new Date(currentYear, currentMonth, 1).getDay();
     var calendarTitle = document.getElementById('calendar-title');
 
-    // Limpiar el contenido del calendario antes de generar los días
     var calendarBody = document.getElementById('calendar-body');
     calendarBody.innerHTML = '';
 
@@ -182,7 +181,6 @@ function createNavigationTabs() {
       calendarBody.appendChild(dayNameCell);
     }
 
-    // Generar las celdas de los días
     for (var i = 0; i < firstDayIndex; i++) {
       var emptyCell = document.createElement('div');
       emptyCell.classList.add('empty-cell');
