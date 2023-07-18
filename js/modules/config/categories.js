@@ -1,5 +1,3 @@
-
-
 const eventscategories = {
   Music: 'Music',
   Sports: 'Sports',
