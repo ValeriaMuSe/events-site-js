@@ -2,7 +2,7 @@ const cache = {};
 
 const proxyCache = new Proxy(cache, {
   get: async (obj, prop) => {
-    if (obj[prop]) {
+    if (obj[prop] && localStorage.getItem(prop)) {
       console.log(`Using proxy cache for category: ${prop}`);
       return Reflect.get(obj, prop);
     } else {
@@ -11,7 +11,9 @@ const proxyCache = new Proxy(cache, {
       const response = await fetch(url);
       const data = await response.json();
 
+
       obj[prop] = data;
+      localStorage.setItem(prop, JSON.stringify(data));
       return Reflect.get(obj, prop);
     }
   }

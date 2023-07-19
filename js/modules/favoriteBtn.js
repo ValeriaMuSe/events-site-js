@@ -32,7 +32,7 @@ function addHeartImageEventListener(heartImage) {
       }
     } else {
       updatedHeartImage = './images/heart-filled.svg';
-      favorites.unshift({ eventTitle, heartImage: updatedHeartImage });
+      favorites.unshift({ eventTitle });
     }
 
     heartImage.src = updatedHeartImage;

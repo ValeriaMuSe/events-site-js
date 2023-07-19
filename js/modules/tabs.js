@@ -51,6 +51,7 @@ function renderEvents(eventsData) {
 function handleInterestedButtonClick(event) {
   const eventCard = event.target.closest('.event-card');
   const eventTitle = eventCard.querySelector('.event_title').textContent;
+  const eventkey =  eventCard.querySelector('.default-tab-button');
   const events = getEvents('interestedEvents');
   const eventExists = events.some((storedEvent) => storedEvent.title === eventTitle);
   
@@ -65,11 +66,16 @@ function handleInterestedButtonClick(event) {
 function handleGoingButtonClick(event) {
   const eventCard = event.target.closest('.event-card');
   const eventTitle = eventCard.querySelector('.event_title').textContent;
+  let eventkey =  document.querySelector('.default-tab-button').textContent;
+  eventkey = eventkey.toLowerCase();
+  const selectedEvents = getEvents(eventkey);
+  const selectedEvent = selectedEvents.find (element => element.title === eventTitle);
   const events = getEvents('goingEvents');
-  const eventExists = events.some((storedEvent) => storedEvent.title === eventTitle);
+  console.log(selectedEvent)
+  const eventExists = events.some(storedEvent => storedEvent.title === eventTitle);
   
   if (!eventExists) {
-    saveEvent(eventTitle, 'goingEvents');
+    saveEvent(selectedEvent, 'goingEvents');
     console.log('Event added to LocalStorage:', eventTitle);
   } else {
     console.log('Event already exists in LocalStorage:', eventTitle);
