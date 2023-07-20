@@ -13,7 +13,9 @@ function renderEvents(eventsData) {
     gridContainer = document.createElement('div');
     gridContainer.id = 'grid-container';
     document.body.appendChild(gridContainer);
+
   }
+
   gridContainer.innerHTML = eventsData
     .map((event) => `
       <div class="event event-card">
@@ -48,32 +50,74 @@ function renderEvents(eventsData) {
   handleHeartImageClick();
 }
 
+
+
+
+// function handleInterestedButtonClick(event) {
+//   const eventCard = event.target.closest('.event-card');
+//   const eventTitle = eventCard.querySelector('.event_title').textContent;
+//   let eventkey =  document.querySelector('.default-tab-button').textContent;
+//   eventkey = eventkey.toLowerCase();
+//   const selectedEvents = getEvents(eventkey);
+//   const selectedEvent = selectedEvents.find (element => element.title === eventTitle);
+//   const events = getEvents('interestedEvents');
+//   console.log(selectedEvent)
+//   const eventExists = events.some(storedEvent => storedEvent.title === eventTitle);
+
+
+
+//   if (!eventExists) {
+//     saveEvent(selectedEvent, 'interestedEvents');
+//     console.log('Event added to LocalStorage:', eventTitle);
+//   } else {
+//     console.log('Event already exists in LocalStorage:', eventTitle);
+//   }
+// }
+
+///nueva version para agregar interested a localstorage
 function handleInterestedButtonClick(event) {
   const eventCard = event.target.closest('.event-card');
-  const eventTitle = eventCard.querySelector('.event_title').textContent;
-  const eventkey =  eventCard.querySelector('.default-tab-button');
-  const events = getEvents('interestedEvents');
-  const eventExists = events.some((storedEvent) => storedEvent.title === eventTitle);
-  
-  if (!eventExists) {
-    saveEvent(eventTitle, 'interestedEvents');
-    console.log('Event added to LocalStorage:', eventTitle);
-  } else {
-    console.log('Event already exists in LocalStorage:', eventTitle);
+
+
+  const eventTitleElement = eventCard.querySelector('.event_title');
+
+
+  // Verifica si se encontró el elemento .event_title
+  if (!eventTitleElement) {
+    console.error("Error: No se encontró el elemento con la clase '.event_title'.");
+    return;
   }
+
+  const eventTitle = eventTitleElement.textContent;
+  let eventkey = document.querySelector('.default-tab-button').textContent;
+  eventkey = eventkey.toLowerCase();
+  const selectedEvents = getEvents(eventkey);
+  const selectedEvent = selectedEvents.find(element => element.title === eventTitle);
+
+
+  if (!selectedEvent) {
+    console.error("Error: No se encontró el evento seleccionado en la lista de eventos.");
+    return;
+  }
+
+  // Guardar el evento seleccionado en el Local Storage
+  saveEvent(selectedEvent, 'interestedEvents');
+  console.log('Event added to LocalStorage:', selectedEvent);
 }
+
+
 
 function handleGoingButtonClick(event) {
   const eventCard = event.target.closest('.event-card');
   const eventTitle = eventCard.querySelector('.event_title').textContent;
-  let eventkey =  document.querySelector('.default-tab-button').textContent;
+  let eventkey = document.querySelector('.default-tab-button').textContent;
   eventkey = eventkey.toLowerCase();
   const selectedEvents = getEvents(eventkey);
-  const selectedEvent = selectedEvents.find (element => element.title === eventTitle);
+  const selectedEvent = selectedEvents.find(element => element.title === eventTitle);
   const events = getEvents('goingEvents');
   console.log(selectedEvent)
   const eventExists = events.some(storedEvent => storedEvent.title === eventTitle);
-  
+
   if (!eventExists) {
     saveEvent(selectedEvent, 'goingEvents');
     console.log('Event added to LocalStorage:', eventTitle);
