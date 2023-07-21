@@ -213,3 +213,7 @@ body {
   font-weight: 500;
   color: rgb(112, 112, 112);
 }
+
+.interested-event {
+  border: 2px solid #FFD700; /* Cambiar el color de borde o cualquier otro estilo deseado */
+}

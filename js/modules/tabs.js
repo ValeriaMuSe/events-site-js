@@ -52,7 +52,6 @@ function renderEvents(eventsData) {
 
 
 
-
 // function handleInterestedButtonClick(event) {
 //   const eventCard = event.target.closest('.event-card');
 //   const eventTitle = eventCard.querySelector('.event_title').textContent;
@@ -73,6 +72,7 @@ function renderEvents(eventsData) {
 //     console.log('Event already exists in LocalStorage:', eventTitle);
 //   }
 // }
+
 
 ///nueva version para agregar interested a localstorage
 function handleInterestedButtonClick(event) {
@@ -100,8 +100,8 @@ function handleInterestedButtonClick(event) {
     return;
   }
 
-  // Guardar el evento seleccionado en el Local Storage
-  saveEvent(selectedEvent, 'interestedEvents');
+ 
+  saveEvent(selectedEvent, 'interested');
   console.log('Event added to LocalStorage:', selectedEvent);
 }
 
@@ -114,12 +114,12 @@ function handleGoingButtonClick(event) {
   eventkey = eventkey.toLowerCase();
   const selectedEvents = getEvents(eventkey);
   const selectedEvent = selectedEvents.find(element => element.title === eventTitle);
-  const events = getEvents('goingEvents');
+  const events = getEvents('going');
   console.log(selectedEvent)
   const eventExists = events.some(storedEvent => storedEvent.title === eventTitle);
 
   if (!eventExists) {
-    saveEvent(selectedEvent, 'goingEvents');
+    saveEvent(selectedEvent, 'going');
     console.log('Event added to LocalStorage:', eventTitle);
   } else {
     console.log('Event already exists in LocalStorage:', eventTitle);
@@ -136,4 +136,4 @@ function handleClick(category) {
     });
 }
 
-export { handleClick, handleHeartImageClick };
+export { handleClick, handleHeartImageClick, renderEvents };

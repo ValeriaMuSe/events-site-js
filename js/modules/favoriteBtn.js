@@ -1,7 +1,8 @@
-import { singletonState } from './state/state.js';
 import { saveEvent, getEvents } from './localstorage/LocalStorage.js';
+import { singletonState } from './state/state.js';
 
-let favorites = []; // Define and initialize the 'favorites' variable
+let favorites = []; 
+
 
 function handleHeartImageClick() {
   const heartImages = document.querySelectorAll('.heart-image');
@@ -11,47 +12,50 @@ function handleHeartImageClick() {
 }
 
 function addHeartImageEventListener(heartImage) {
+  
+  
   const state = new Map(); // Create a Map to store the state for each heart image
 
   heartImage.addEventListener('click', () => {
+    if (localStorage.getItem('favorites') != null )  {
+      favorites  = localStorage.getItem('favorites');
+      favorites = JSON.parse(favorites);
+    }
     const currentState = state.get(heartImage) || { isClicked: false }; // Get the current state for the heart image
-
-    const newHeartImage = currentState.isClicked ? './images/heart.svg' : './images/heart-filled.svg';
-
-    heartImage.src = newHeartImage;
 
     const eventCard = heartImage.closest('.event-card');
     const eventTitle = eventCard.querySelector('.event_title').textContent;
+    console.log('Event title:', eventTitle); // Add this line to check the event title
 
-    let updatedHeartImage;
-    if (favorites.length > 0 && favorites[0].eventTitle === eventTitle) {
-      updatedHeartImage = favorites[0].heartImage === './images/heart.svg' ? './images/heart-filled.svg' : './images/heart.svg';
-      favorites[0].heartImage = updatedHeartImage;
-      if (updatedHeartImage === './images/heart.svg') {
-        favorites.shift(); // Remove the event from the state
-      }
+    const eventIndex = favorites.findIndex(event => event.eventTitle === eventTitle);
+
+    if (currentState.isClicked) {
+      // If the heart is currently filled (clicked), remove the event from favorites and set the heart to empty
+      favorites.splice(eventIndex, 1);
+      heartImage.src = './images/heart.svg';
     } else {
-      updatedHeartImage = './images/heart-filled.svg';
-      favorites.unshift({ eventTitle });
+      // If the heart is currently empty, add the event to favorites and set the heart to filled
+      const selectedEvent = getEventByTitle(eventTitle);
+      if (!selectedEvent) {
+        console.log(`Error: Event "${eventTitle}" not found.`);
+        return;
+      }
+      favorites.push({ ...selectedEvent });
+      heartImage.src = './images/heart-filled.svg';
     }
 
-    heartImage.src = updatedHeartImage;
+    const favoriteEvents = getEvents('favorites');
 
-    const favoriteEvents = getEvents('favoriteEvents');
-
-    if (updatedHeartImage === './images/heart-filled.svg') {
-      if (!favoriteEvents.includes(eventTitle)) {
-        saveEvent(eventTitle, 'favoriteEvents');
-        console.log('LocalStorage: Event added to favorites:', eventCard);
-      }
-    } else {
+    if (currentState.isClicked) {
+      // If the heart is currently filled (clicked), remove the event from favoriteEvents in localStorage
       const eventIndex = favoriteEvents.indexOf(eventTitle);
       if (eventIndex !== -1) {
         favoriteEvents.splice(eventIndex, 1);
-        localStorage.setItem('favoriteEvents', JSON.stringify(favoriteEvents));
+        localStorage.setItem('favorites', JSON.stringify(favoriteEvents));
         console.log('LocalStorage: Event removed from favorites:', eventTitle);
       }
-    }
+    } 
+    
 
     console.log('Current favorites:', favorites);
     const newState = { isClicked: !currentState.isClicked }; // Update the state for the heart image
@@ -59,6 +63,19 @@ function addHeartImageEventListener(heartImage) {
 
     localStorage.setItem('favorites', JSON.stringify(favorites));
   });
+}
+
+function getEventByTitle(title) {
+  // Search the event in the 'favorites' list first
+  const favoriteEvent = favorites.find(event => event.eventTitle === title);
+  if (favoriteEvent) {
+    return favoriteEvent;
+  }
+
+  // If not found in 'favorites', search in the currently selected events
+  const eventKey = document.querySelector('.default-tab-button').textContent.toLowerCase();
+  const selectedEvents = getEvents(eventKey);
+  return selectedEvents.find(element => element.title === title);
 }
 
 document.addEventListener('DOMContentLoaded', handleHeartImageClick);

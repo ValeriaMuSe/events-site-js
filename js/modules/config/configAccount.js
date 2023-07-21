@@ -1,4 +1,5 @@
 import { accountcategories } from './categories.js';
+import { renderEvents } from '../tabs.js';
 
 function createNavigationTabs() {
   var defaultButton = null;
@@ -8,8 +9,8 @@ function createNavigationTabs() {
   var container = document.querySelector('.container');
   container.innerHTML += `
     <div class="container-account">
-      <a class="my-account__link" href="../../index.html"><img class="arrow-left__icon" src="./images/arrow-left-icon.svg"></a>
-      <a class="my-account__link link-variant" href="../../index.html">Back to events</a>
+      <a class="my-account__link" href="./index.html"><img class="arrow-left__icon" src="./images/arrow-left-icon.svg"></a>
+      <a class="my-account__link link-variant" href="./index.html">Back to events</a>
     </div>
   `;
 
@@ -28,7 +29,8 @@ function createNavigationTabs() {
       if (defaultButton !== null) {
         defaultButton.classList.remove('default-tab-button');
       }
-      showTab(category.toLowerCase());
+      
+      renderEvents(JSON.parse(localStorage.getItem(category.toLowerCase())));
       button.classList.add('default-tab-button');
       defaultButton = button;
     });
@@ -95,18 +97,18 @@ function createNavigationTabs() {
   });
 
   container.appendChild(tabsContainer);
-  gridContainer.parentNode.insertBefore(tabContentContainer, gridContainer.nextSibling);
-
+ 
   function showTab(tabName) {
     var tabContents = document.getElementsByClassName('tab-content');
     for (var i = 0; i < tabContents.length; i++) {
       tabContents[i].style.display = 'none';
     }
 
-    var selectedTab = document.getElementById(tabName);
-    selectedTab.style.display = 'block';
+    
   }
 
+ 
+  
   function showCalendarTab() {
     var tabContents = document.getElementsByClassName('tab-content');
     for (var i = 0; i < tabContents.length; i++) {
