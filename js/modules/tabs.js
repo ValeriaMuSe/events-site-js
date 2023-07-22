@@ -15,6 +15,11 @@ function renderEvents(eventsData) {
     document.body.appendChild(gridContainer);
 
   }
+  // Asegurémonos de que eventsData sea un array antes de usar map
+  if (!Array.isArray(eventsData)) {
+    // Si eventsData no es un array, podemos asignar un array vacío a eventsData para que el map no cause errores.
+    eventsData = [];
+  }
 
   gridContainer.innerHTML = eventsData
     .map((event) => `
