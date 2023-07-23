@@ -15,9 +15,9 @@ function renderEvents(eventsData) {
     document.body.appendChild(gridContainer);
 
   }
-  // Asegurémonos de que eventsData sea un array antes de usar map
+ 
   if (!Array.isArray(eventsData)) {
-    // Si eventsData no es un array, podemos asignar un array vacío a eventsData para que el map no cause errores.
+    
     eventsData = [];
   }
 
@@ -56,30 +56,6 @@ function renderEvents(eventsData) {
 }
 
 
-
-// function handleInterestedButtonClick(event) {
-//   const eventCard = event.target.closest('.event-card');
-//   const eventTitle = eventCard.querySelector('.event_title').textContent;
-//   let eventkey =  document.querySelector('.default-tab-button').textContent;
-//   eventkey = eventkey.toLowerCase();
-//   const selectedEvents = getEvents(eventkey);
-//   const selectedEvent = selectedEvents.find (element => element.title === eventTitle);
-//   const events = getEvents('interestedEvents');
-//   console.log(selectedEvent)
-//   const eventExists = events.some(storedEvent => storedEvent.title === eventTitle);
-
-
-
-//   if (!eventExists) {
-//     saveEvent(selectedEvent, 'interestedEvents');
-//     console.log('Event added to LocalStorage:', eventTitle);
-//   } else {
-//     console.log('Event already exists in LocalStorage:', eventTitle);
-//   }
-// }
-
-
-///nueva version para agregar interested a localstorage
 function handleInterestedButtonClick(event) {
   const eventCard = event.target.closest('.event-card');
 

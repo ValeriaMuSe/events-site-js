@@ -158,6 +158,8 @@ body {
   font-weight: bold;
   margin-bottom: 10px;
   color: #020202;
+  position: relative;
+  left: 369px;
 }
 
 #calendar-body {
@@ -183,6 +185,8 @@ body {
   margin-bottom: 50px;
   margin-top: 50px;
   gap: 30px;
+  position: relative;
+  left: 375px;
 }
 
 .calendar-button {
