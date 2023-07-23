@@ -339,6 +339,10 @@ function createNavigationTabs() {
     calendarTitle.innerHTML = getMonthName(currentMonth) + ' ' + currentYear;
 
     generateCalendar(currentYear, currentMonth);
+     var gridContainer = document.getElementById('grid-container');
+     if (gridContainer) {
+      gridContainer.appendChild(calendar);
+     }
   }
 
   function showPreviousMonth() {
