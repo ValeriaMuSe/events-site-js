@@ -3,11 +3,11 @@ import { accountcategories } from './categories.js';
 import { renderEvents } from '../tabs.js';
 
 function createNavigationTabs() {
-  var defaultButton = null;
-  var currentMonth = null;
-  var currentYear = null;
+ let defaultButton = null;
+ let currentMonth = null;
+ let currentYear = null;
 
-  var container = document.querySelector('.container');
+ let container = document.querySelector('.container');
   container.innerHTML += `
     <div class="container-account">
       <a class="my-account_link" href="./index.html"><img class="arrow-left__icon" src="./images/arrow-left-icon.svg"></a>
@@ -15,16 +15,16 @@ function createNavigationTabs() {
     </div>
   `;
 
-  var gridContainer = document.getElementById('grid-container');
+ let gridContainer = document.getElementById('grid-container');
 
-  var tabContentContainer = document.createElement('div');
+ let tabContentContainer = document.createElement('div');
   tabContentContainer.className = 'tab-content-container';
 
-  var tabsContainer = document.createElement('div');
+ let tabsContainer = document.createElement('div');
   tabsContainer.className = 'tabs';
 
   Object.values(accountcategories).forEach(function (category) {
-    var button = document.createElement('button');
+   let button = document.createElement('button');
     button.innerHTML = category;
     button.addEventListener('click', function () {
       if (defaultButton !== null) {
@@ -48,7 +48,7 @@ function createNavigationTabs() {
       button.classList.add('default-tab-button');
       defaultButton = button;
 
-      var favoritesContent = document.createElement('div');
+     let favoritesContent = document.createElement('div');
       favoritesContent.id = 'favorites';
       favoritesContent.className = 'tab-content favorites-content';
       favoritesContent.textContent = 'Favorite Events';
@@ -58,19 +58,19 @@ function createNavigationTabs() {
         showCalendarTab();
       });
 
-      var calendarContent = document.createElement('div');
+     let calendarContent = document.createElement('div');
       calendarContent.id = 'calendar';
       calendarContent.className = 'tab-content calendar-content';
       calendarContent.style.display = 'none';
 
-      var calendarTitle = document.createElement('h2');
+     let calendarTitle = document.createElement('h2');
       calendarTitle.id = 'calendar-title';
       calendarContent.appendChild(calendarTitle);
 
-      var btnsContainer = document.createElement('div');
+     let btnsContainer = document.createElement('div');
       btnsContainer.className = 'calendar btns-container';
 
-      var prevMonthButton = document.createElement('button');
+     let prevMonthButton = document.createElement('button');
       prevMonthButton.innerHTML = 'Previous Month';
       prevMonthButton.className = 'calendar-button';
       prevMonthButton.addEventListener('click', function () {
@@ -78,7 +78,7 @@ function createNavigationTabs() {
       });
       btnsContainer.appendChild(prevMonthButton);
 
-      var nextMonthButton = document.createElement('button');
+     let nextMonthButton = document.createElement('button');
       nextMonthButton.innerHTML = 'Next Month';
       nextMonthButton.className = 'calendar-button';
       nextMonthButton.addEventListener('click', function () {
@@ -88,7 +88,7 @@ function createNavigationTabs() {
 
       calendarContent.appendChild(btnsContainer);
 
-      var calendar = document.createElement('div');
+     let calendar = document.createElement('div');
       calendar.id = 'calendar-body';
       calendar.className = 'calendar-body';
       calendarContent.appendChild(calendar);
@@ -101,8 +101,8 @@ function createNavigationTabs() {
   container.appendChild(tabContentContainer);
 
   function showTab(tabName) {
-    var tabContents = document.getElementsByClassName('tab-content');
-    for (var i = 0; i < tabContents.length; i++) {
+   let tabContents = document.getElementsByClassName('tab-content');
+    for (let i = 0; i < tabContents.length; i++) {
       if (tabContents[i].id === tabName) {
         tabContents[i].style.display = 'block';
       } else {
@@ -112,12 +112,12 @@ function createNavigationTabs() {
   }
 
   function showCalendarTab() {
-    var tabContents = document.getElementsByClassName('tab-content');
-    for (var i = 0; i < tabContents.length; i++) {
+   let tabContents = document.getElementsByClassName('tab-content');
+    for (let i = 0; i < tabContents.length; i++) {
       tabContents[i].style.display = 'none';
     }
 
-    var calendarTab = document.getElementById('calendar');
+   let calendarTab = document.getElementById('calendar');
     if (!calendarTab) {
       calendarTab = document.createElement('div');
       calendarTab.id = 'calendar';
@@ -130,15 +130,15 @@ function createNavigationTabs() {
   }
 
   function renderCalendar() {
-    var currentDate = new Date();
+   let currentDate = new Date();
     currentMonth = currentDate.getMonth();
     currentYear = currentDate.getFullYear();
 
-    var calendarTitle = document.getElementById('calendar-title');
+   let calendarTitle = document.getElementById('calendar-title');
     calendarTitle.innerHTML = getMonthName(currentMonth) + ' ' + currentYear;
 
     generateCalendar(currentYear, currentMonth);
-     var gridContainer = document.getElementById('grid-container');
+    let gridContainer = document.getElementById('grid-container');
      if (gridContainer) {
       gridContainer.appendChild(calendar);
      }
@@ -150,7 +150,7 @@ function createNavigationTabs() {
       currentMonth = 11;
       currentYear--;
     }
-    var calendarTitle = document.getElementById('calendar-title');
+   let calendarTitle = document.getElementById('calendar-title');
     calendarTitle.innerHTML = getMonthName(currentMonth) + ' ' + currentYear;
 
     generateCalendar(currentYear, currentMonth);
@@ -162,14 +162,14 @@ function createNavigationTabs() {
       currentMonth = 0;
       currentYear++;
     }
-    var calendarTitle = document.getElementById('calendar-title');
+   let calendarTitle = document.getElementById('calendar-title');
     calendarTitle.innerHTML = getMonthName(currentMonth) + ' ' + currentYear;
 
     generateCalendar(currentYear, currentMonth);
   }
 
   function getMonthName(month) {
-    var monthNames = [
+   let monthNames = [
       'January', 'February', 'March', 'April', 'May', 'June',
       'July', 'August', 'September', 'October', 'November', 'December'
     ];
@@ -177,32 +177,32 @@ function createNavigationTabs() {
   }
 
   function generateCalendar(year, month) {
-    var dayNames = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
-    var currentDate = new Date(year, month);
-    var currentYear = currentDate.getFullYear();
-    var currentMonth = currentDate.getMonth();
-    var daysInMonth = new Date(currentYear, currentMonth + 1, 0).getDate();
-    var firstDayIndex = new Date(currentYear, currentMonth, 1).getDay();
-    var calendarTitle = document.getElementById('calendar-title');
+   let dayNames = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+   let currentDate = new Date(year, month);
+   let currentYear = currentDate.getFullYear();
+   let currentMonth = currentDate.getMonth();
+   let daysInMonth = new Date(currentYear, currentMonth + 1, 0).getDate();
+   let firstDayIndex = new Date(currentYear, currentMonth, 1).getDay();
+   let calendarTitle = document.getElementById('calendar-title');
 
-    var calendarBody = document.getElementById('calendar-body');
+   let calendarBody = document.getElementById('calendar-body');
     calendarBody.innerHTML = '';
 
-    for (var i = 0; i < dayNames.length; i++) {
-      var dayNameCell = document.createElement('div');
+    for (let i = 0; i < dayNames.length; i++) {
+     let dayNameCell = document.createElement('div');
       dayNameCell.classList.add('day-name-cell');
       dayNameCell.innerHTML = dayNames[i];
       calendarBody.appendChild(dayNameCell);
     }
 
-    for (var i = 0; i < firstDayIndex; i++) {
-      var emptyCell = document.createElement('div');
+    for (let i = 0; i < firstDayIndex; i++) {
+     let emptyCell = document.createElement('div');
       emptyCell.classList.add('empty-cell');
       calendarBody.appendChild(emptyCell);
     }
 
-    for (var day = 1; day <= daysInMonth; day++) {
-      var dayCell = document.createElement('div');
+    for (let day = 1; day <= daysInMonth; day++) {
+     let dayCell = document.createElement('div');
       dayCell.classList.add('day-cell');
       dayCell.innerHTML = day;
       calendarBody.appendChild(dayCell);
