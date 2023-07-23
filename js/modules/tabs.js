@@ -65,7 +65,6 @@ function handleInterestedButtonClick(event) {
 
   // Verifica si se encontró el elemento .event_title
   if (!eventTitleElement) {
-    console.error("Error: No se encontró el elemento con la clase '.event_title'.");
     return;
   }
 
@@ -77,13 +76,11 @@ function handleInterestedButtonClick(event) {
 
 
   if (!selectedEvent) {
-    console.error("Error: No se encontró el evento seleccionado en la lista de eventos.");
     return;
   }
 
  
   saveEvent(selectedEvent, 'interested');
-  console.log('Event added to LocalStorage:', selectedEvent);
 }
 
 
@@ -96,15 +93,11 @@ function handleGoingButtonClick(event) {
   const selectedEvents = getEvents(eventkey);
   const selectedEvent = selectedEvents.find(element => element.title === eventTitle);
   const events = getEvents('going');
-  console.log(selectedEvent)
   const eventExists = events.some(storedEvent => storedEvent.title === eventTitle);
 
   if (!eventExists) {
     saveEvent(selectedEvent, 'going');
-    console.log('Event added to LocalStorage:', eventTitle);
-  } else {
-    console.log('Event already exists in LocalStorage:', eventTitle);
-  }
+  } 
 }
 
 function handleClick(category) {

@@ -25,7 +25,6 @@ function addHeartImageEventListener(heartImage) {
 
     const eventCard = heartImage.closest('.event-card');
     const eventTitle = eventCard.querySelector('.event_title').textContent;
-    console.log('Event title:', eventTitle); // Add this line to check the event title
 
     const eventIndex = favorites.findIndex(event => event.eventTitle === eventTitle);
 
@@ -37,7 +36,6 @@ function addHeartImageEventListener(heartImage) {
       // If the heart is currently empty, add the event to favorites and set the heart to filled
       const selectedEvent = getEventByTitle(eventTitle);
       if (!selectedEvent) {
-        console.log(`Error: Event "${eventTitle}" not found.`);
         return;
       }
       favorites.push({ ...selectedEvent });
@@ -52,12 +50,10 @@ function addHeartImageEventListener(heartImage) {
       if (eventIndex !== -1) {
         favoriteEvents.splice(eventIndex, 1);
         localStorage.setItem('favorites', JSON.stringify(favoriteEvents));
-        console.log('LocalStorage: Event removed from favorites:', eventTitle);
       }
     } 
     
 
-    console.log('Current favorites:', favorites);
     const newState = { isClicked: !currentState.isClicked }; // Update the state for the heart image
     state.set(heartImage, newState); // Store the updated state for the heart image
 
